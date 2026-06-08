@@ -5,9 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Chapitre 2 — Modélisation du procédé d'hydrolyse en continu</title>
   <link rel="stylesheet" href="../styles.css"/>
+  <script src="../lang.js"></script>
 </head>
 <body>
 <main id="main-content">
+<div class="fr-block">
   <div class="chapter-page">
 
     <div class="breadcrumb">
@@ -1300,8 +1302,58 @@
       <a href="chap1.html"><span class="arrow">←</span> Chapitre 1</a>
       <a href="chap3.html"><span class="arrow">→</span> Chapitre 3</a>
     </div>
-
   </div>
+</div>
+
+<div class="en-block">
+  <div class="chapter-page">
+    <div class="breadcrumb">
+      <a href="../index.html">Home</a><span>›</span>
+      <a href="toc.html">Table of contents</a><span>›</span>
+      Chapter 2
+    </div>
+    <span class="chapter-label">Chapter 2</span>
+    <h1 class="chapter-title">Modelling of the continuous thermal hydrolysis process</h1>
+
+    <p>The process proposed for study is the first thermal hydrolysis process designed to operate continuously. The reactor consists of two parts: a vertical column for steam injection and condensation, and a horizontal section to ensure reaction time. A first heat exchanger recovers energy to preheat the steam boiler feed water; a second cools the sludge to the desired digester temperature.</p>
+    <p>Steam injection into the condensation column was initially designed as a multi-hole injection lance. Key uncertainties remained regarding injector geometry: Is the current geometry optimal? Does it enable rapid steam condensation? Does it achieve temperature homogeneity throughout the reactor? Can alternative injector designs be considered and scaled up?</p>
+    <p><strong>For cost and schedule reasons, a numerical model was developed to simulate the expected evaporation-condensation phenomena rather than conducting a design of experiments programme.</strong></p>
+
+    <h2 id="sec-approche">2.1 Approach to the phenomena to be modelled</h2>
+    <h3 id="sec-colonne-vapeur">2.1.1 Steam injection column modelling</h3>
+    <p>Saturated steam is injected at the centre of the vertical section via an injection lance, bringing it into direct contact with sludge. The operating conditions range from 10–100 m/s steam velocity, 5–16 bar pressure, and sludge suspended solids concentrations of 100–200 g/L. A VOF (Volume of Fluid) two-phase model was selected with the Lee evaporation-condensation model under Ansys-Fluent.</p>
+    <h3 id="sec-reacteur-horizontal">2.1.2 Horizontal reactor modelling</h3>
+    <p>The horizontal reactor was modelled as a single-phase flow with a non-Newtonian fluid (Herschel-Bulkley viscosity model) to assess thermal stratification. Sludge rheological properties were characterised from literature data.</p>
+    <h3 id="sec-methodologies">2.1.3 Existing methodologies for the phenomena involved</h3>
+    <p>A review of existing multiphase flow and steam condensation modelling methodologies was carried out. The Lee model was selected as the standard evaporation-condensation model available in Fluent, with custom UDF (User Defined Function) modifications to improve condensation rate accuracy.</p>
+
+    <h2 id="sec-materiel-methode">2.2 Materials and methods</h2>
+    <h3 id="sec-simulation-colonne-pilote">2.2.1 Pilot unit steam injection column simulation</h3>
+    <p>The pilot injection column (DN65, 1.2 m height) was modelled in 3D with an Euler-Euler two-fluid approach. Multiple injector geometries were simulated: initial single-lance, Crown 1, Crown 2, and Komax-type devices. Boundary conditions were set from pilot unit operating data.</p>
+    <h3 id="sec-simulation-reacteur-pilote">2.2.2 Pilot unit reactor simulation</h3>
+    <p>The horizontal hydrolysis reactor (DN150, 4 m length, 5° inclination) was modelled to assess thermal stratification. Simulations compared configurations with and without internal fins and at various inclination angles.</p>
+    <h3 id="sec-extrapolation-industrielle">2.2.3 Scale-up to industrial size</h3>
+    <p>Scale-up simulations were performed for an industrial-scale reactor (DN450) to verify consistency with pilot-scale results and validate the geometric similarity of key phenomena.</p>
+
+    <h2 id="sec-resultats">2.3 Results and discussion</h2>
+    <h3 id="sec-resultats-colonne">2.3.1 Pilot injector column simulation</h3>
+    <p>Simulations showed pocket-type steam dynamics and imperfect condensation, with steam escaping at the column top. The model underestimates column temperature by ~25% compared to experimental values but provides valid qualitative comparisons between injector designs. Crown 2 and Komax-type devices showed superior condensation performance.</p>
+    <h3 id="sec-resultats-reacteur">2.3.2 Pilot reactor simulation</h3>
+    <p>Thermal stratification of 10–15 °C was predicted by simulation, versus 40–80 °C measured experimentally. Internal fins and 5° inclination partially reduce stratification but do not eliminate it. The dynamic mixer injection system was identified as the solution.</p>
+    <h3 id="sec-extrapolation-resultats">2.3.3 Scale-up of the reactor to industrial scale</h3>
+    <p>Industrial-scale simulations (DN450) showed results consistent with pilot scale: pocket-type steam dispersion and direct steam rise at the column centre. The dynamic mixer solution remains applicable at industrial scale without geometry scaling constraints.</p>
+
+    <h2 id="sec-conclusion">2.4 Conclusion</h2>
+    <p>The numerical modelling approach enabled qualitative comparison of five injector designs and identification of the dynamic mixer as the optimal steam injection solution. Temperature homogeneity requirements cannot be met by static injectors alone. The modelling of evaporation-condensation phenomena is inherently complex, and further model refinements would be needed for fully quantitative results.</p>
+    <p>To go further, it would be worth comparing the simulations with another code such as Saturne, developed specifically for evaporation-condensation phenomena, or developing a custom Fluent module.</p>
+
+    <div class="page-nav">
+      <a href="chap1.html"><span class="arrow">←</span> Chapter 1</a>
+      <a href="chap3.html"><span class="arrow">→</span> Chapter 3</a>
+    </div>
+  </div>
+</div>
+
 </main>
 <script src="../layout.js"></script>
 </body>
